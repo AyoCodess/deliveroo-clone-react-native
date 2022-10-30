@@ -1,0 +1,42 @@
+import { View, Text, ScrollView } from 'react-native';
+import React from 'react';
+import { AntDesign } from '@expo/vector-icons';
+import RestaurantCard from './RestaurantCard';
+
+interface Props {
+  title: string;
+  description: string;
+  id: string;
+}
+
+export default function FeaturedRow({ title, description, id }: Props) {
+  return (
+    <View>
+      <View className='mt-4 flex-row items-center justify-between px-4'>
+        <Text className='font-bold text-lg'>{title}</Text>
+        <AntDesign name='arrowright' size={24} color='#00ccbb' />
+      </View>
+      <Text className='text-xs text-gray-500 px-4'>{description}</Text>
+      <ScrollView
+        horizontal
+        contentContainerStyle={{
+          paddingHorizontal: 15,
+        }}
+        showsVerticalScrollIndicator={false}
+        className='pt-4'>
+        <RestaurantCard
+          id={1}
+          imgUri={'https://links.papareact.com/gn7'}
+          title='Yo Sumo'
+          rating={4.5}
+          genre={'Japanese'}
+          address={'13th Street, New York'}
+          short_description={' Japanese, Sushi, Asian'}
+          dishes={[]}
+          long={20}
+          lat={0}
+        />
+      </ScrollView>
+    </View>
+  );
+}
